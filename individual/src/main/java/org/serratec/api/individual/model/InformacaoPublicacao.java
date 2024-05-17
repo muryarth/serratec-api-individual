@@ -2,25 +2,26 @@ package org.serratec.api.individual.model;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
-import jakarta.validation.constraints.Past;
+import jakarta.validation.constraints.NotNull;
 
 @Embeddable
 public class InformacaoPublicacao {
 
-	@Column(name = "autor", nullable = false, length = 20)
+	@NotNull(message = "Não pode ser nulo")
+	@Column(name = "editora", nullable = false, length = 20)
 	private String editora;
 
+	@NotNull(message = "Não pode ser nulo")
 	@Column(name = "autor", nullable = false, length = 20)
 	private String autor;
 
-	@Column(name = "data_publicacao", columnDefinition = "DATE")
-	@Temporal(TemporalType.DATE)
-	@Past(message = "*dataPublicacao* deve ser anterior à data atual para o Embeddable *informacaoPublicacao*")
-	private Date dataPublicacao;
+	@Column(name = "data_publicacao")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
+	private Date dataPublicacao;	
 
 	public String getEditora() {
 		return editora;

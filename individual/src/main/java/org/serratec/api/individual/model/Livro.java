@@ -9,8 +9,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -27,8 +27,8 @@ public class Livro {
 	@Column(name = "titulo", nullable = false, length = 20)
 	private String titulo;
 
-	@NotNull(message = "*informacaoPublicacao* espera um objeto não-nulo para *Livro*")
 	@Embedded
+	@Valid
 	private InformacaoPublicacao informacaoPublicacao;
 
 	public Long getId() {
@@ -71,4 +71,10 @@ public class Livro {
 		Livro other = (Livro) obj;
 		return Objects.equals(id, other.id);
 	}
+
+	@Override
+	public String toString() {
+		return "Livro [id=" + id + ", titulo=" + titulo + ", informacaoPublicacao=" + informacaoPublicacao + "]";
+	}
+
 }
