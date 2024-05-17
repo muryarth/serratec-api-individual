@@ -19,9 +19,10 @@ public class InformacaoPublicacao {
 	@Column(name = "autor", nullable = false, length = 20)
 	private String autor;
 
-	@Column(name = "data_publicacao")
+	@NotNull(message = "Não pode ser nulo")
+	@Column(name = "data_publicacao", nullable = false)
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
-	private Date dataPublicacao;	
+	private Date dataPublicacao;
 
 	public String getEditora() {
 		return editora;
