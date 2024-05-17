@@ -1,5 +1,5 @@
 # Trabalho individual de API do Serratec
-Biblioteca.
+Sistema de biblioteca.
 
 ## 🌐 URI de base do projeto
 
